@@ -3,6 +3,10 @@
 ---
 *Note: this is not an official Google project*
 
+| Statements                  | Branches                | Functions                 | Lines             |
+| --------------------------- | ----------------------- | ------------------------- | ----------------- |
+| ![Statements](https://img.shields.io/badge/statements-77.68%25-red.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-75%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-80.32%25-yellow.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-78.43%25-red.svg?style=flat) |
+
 # Introduction
 Google uses a [card-based UI](https://developers.google.com/apps-script/add-ons/concepts/card-interfaces) for Workspace Add-ons. These UIs can be created by a JSON object with elements that you want in your UI. A handy tool to try all the available elements can be found [here](https://addons.gsuite.google.com/uikit/builder).
 Setting up these JSON objects by hand quickly becomes cumbersome though. For this reason, Google has offered a CardService in Apps Script to create UIs using a [builder pattern](https://refactoring.guru/design-patterns/builder).
