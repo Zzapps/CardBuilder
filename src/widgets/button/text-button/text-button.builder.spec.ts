@@ -30,13 +30,13 @@ describe('TextButtonBuilder', () => {
     expect(output.disabled).toBe(disabled);
   });
 
-  it.skip('should set the button color', () => {
-    sut.setBackgroundColor(0.9, 0.8, 0.7, 1);
+  it('should set the button color', () => {
+    sut.setBackgroundColor('#ffffff');
     const output = sut.build();
     expect(output.color).toEqual({
-      red: 0.9,
-      green: 0.8,
-      blue: 0.7,
+      red: 1,
+      green: 1,
+      blue: 1,
       alpha: 1,
     });
   });

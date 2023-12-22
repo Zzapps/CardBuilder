@@ -5,7 +5,7 @@
 
 | Statements                  | Branches                | Functions                 | Lines             |
 | --------------------------- | ----------------------- | ------------------------- | ----------------- |
-| ![Statements](https://img.shields.io/badge/statements-77.68%25-red.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-75%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-80.32%25-yellow.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-78.43%25-red.svg?style=flat) |
+| ![Statements](https://img.shields.io/badge/statements-81.56%25-yellow.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-76.85%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-82.25%25-yellow.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-82.28%25-yellow.svg?style=flat) |
 
 # Introduction
 Google uses a [card-based UI](https://developers.google.com/apps-script/add-ons/concepts/card-interfaces) for Workspace Add-ons. These UIs can be created by a JSON object with elements that you want in your UI. A handy tool to try all the available elements can be found [here](https://addons.gsuite.google.com/uikit/builder).

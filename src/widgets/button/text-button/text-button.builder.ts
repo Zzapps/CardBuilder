@@ -28,15 +28,13 @@ export class TextButtonBuilder {
     return this;
   }
 
-  // TODO: Switch to Hex
-  public setBackgroundColor(
-    red: number,
-    green: number,
-    blue: number,
-    alpha: number,
-  ): this {
-    const color = new Color(red, green, blue, alpha);
-    this._props.color = color;
+  /**
+   * Sets the background color of the button
+   * @params color Accepts both 6 and 8 digit Hex values
+   */
+  public setBackgroundColor(color: string): this {
+    const instance = Color.fromHex(color);
+    this._props.color = instance;
     return this;
   }
 
