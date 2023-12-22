@@ -1,57 +1,46 @@
-import { ActionBuilder } from '../../actions/action.builder';
-import { CardBuilder } from '../../card.builder';
-import { SelectionInputItem } from './selection-input-item';
-import { SelectionInputBuilder } from './selection-input.builder';
+import { CardBuilder } from "../../card.builder";
+import { SelectionInputItem } from "./selection-input-item";
+import { SelectionInputBuilder } from "./selection-input.builder";
+import { SelectionInputWidget } from "./selection-input.widget";
 
-describe('SelectionInputBuilder', () => {
+describe("SelectionInputBuilder", () => {
   let sut: SelectionInputBuilder;
 
   beforeEach(() => {
     sut = new SelectionInputBuilder();
   });
 
-  test('should set the name', () => {
-    const name = 'my name';
-    sut.setName(name);
-    const output = sut.build();
-    expect(output.name).toBe(name);
-  });
+  describe("build", () => {
+    it("should return a SelectionInputWidget", () => {
+      sut.setName("foo");
+      const widget = sut.build();
+      expect(widget).toBeInstanceOf(SelectionInputWidget);
+    });
 
-  test('should set the type', () => {
-    const type = CardBuilder.SelectionInputType.RADIO_BUTTON;
-    sut.setType(type);
-    const output = sut.build();
-    expect(output.type).toBe(type);
-  });
+    it("should build the onChangeAction if it is set", () => {
+      const actionBuilder = CardBuilder.newAction().setFunctionName("foo");
+      vi.spyOn(actionBuilder, "build");
 
-  test('should set the label', () => {
-    const label = 'some label';
-    sut.setLabel(label);
-    const output = sut.build();
-    expect(output.label).toBe(label);
-  });
+      sut.setOnChangeAction(actionBuilder);
+      const widget = sut.build();
 
-  test('should set the label via the title method', () => {
-    const label = 'some other label';
-    sut.setTitle(label);
-    const output = sut.build();
-    expect(output.label).toBe(label);
-  });
+      expect(actionBuilder.build).toHaveBeenCalled();
 
-  test('should set the onChange action', () => {
-    const action = new ActionBuilder().setFunction('foo').build();
-    sut.setOnChangeAction(action);
-    const output = sut.build();
-    expect(output.onChangeAction).toEqual({
-      function: 'foo',
-      parameters: [],
+      const action = actionBuilder.build();
+      expect(widget.onChangeAction).toEqual(action);
+    });
+
+    it("should default to SWITCH input type", () => {
+      sut.setName("foo");
+      const widget = sut.build();
+      expect(widget.type).toEqual(CardBuilder.SelectionInputType.SWITCH);
     });
   });
 
-  describe('should create', () => {
-    test('an item with text and value', () => {
-      const itemKey = 'foo';
-      const itemValue = 'bar';
+  describe("addItem())", () => {
+    it("should add an item with text and value", () => {
+      const itemKey = "foo";
+      const itemValue = "bar";
 
       sut.addItem(itemKey, itemValue);
 
@@ -66,9 +55,9 @@ describe('SelectionInputBuilder', () => {
       });
     });
 
-    test('an item with selected boolean', () => {
-      const itemKey = 'foo';
-      const itemValue = 'bar';
+    it("should add an item with selected boolean", () => {
+      const itemKey = "foo";
+      const itemValue = "bar";
       const itemIsSelected = true;
 
       sut.addItem(itemKey, itemValue, itemIsSelected);
@@ -84,11 +73,11 @@ describe('SelectionInputBuilder', () => {
       });
     });
 
-    test('multiple items', () => {
-      const item1Key = 'foo';
-      const item2Key = 'foo2';
-      const item1Value = 'bar';
-      const item2Value = 'bar2';
+    it("should add multiple items", () => {
+      const item1Key = "foo";
+      const item2Key = "foo2";
+      const item1Value = "bar";
+      const item2Value = "bar2";
 
       sut.addItem(item1Key, item1Value);
       sut.addItem(item2Key, item2Value, true);

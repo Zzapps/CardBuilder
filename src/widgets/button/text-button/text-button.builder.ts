@@ -1,11 +1,12 @@
-import { Action } from '../../../actions/action';
-import { OpenLinkAction } from '../../../actions/open-link-action';
-import { Color } from '../../../shared/color';
-import { TextButtonWidget, TextButtonWidgetProps } from './text-button.widget';
+import { Action } from "../../../actions/action";
+import { OpenLinkAction } from "../../../actions/open-link-action";
+import { Color } from "../../../shared/color";
+import { TextButtonWidget, TextButtonWidgetProps } from "./text-button.widget";
 
+// TODO: Allow directly setting the text by passing a string into the constructor
 export class TextButtonBuilder {
   private _props: TextButtonWidgetProps = {
-    text: '',
+    text: "",
   };
 
   public build(): TextButtonWidget {

@@ -1,13 +1,24 @@
-import { Widget } from '../widgets';
-import { CardSection, CardSectionProps } from './card-section';
+import { WidgetBuilder } from "../widgets";
+import { CardSection, CardSectionProps } from "./card-section";
+
+type CardSectionBuilderProps = {
+  header?: string;
+  collapsible?: boolean;
+  numUncollapsibleWidgets?: number;
+  widgetBuilders: WidgetBuilder[];
+};
 
 export class CardSectionBuilder {
-  private _props: CardSectionProps = {
-    widgets: [],
+  private _props: CardSectionBuilderProps = {
+    widgetBuilders: [],
   };
 
   public build(): CardSection {
-    return new CardSection(this._props);
+    const props: CardSectionProps = {
+      ...this._props,
+      widgets: this._props.widgetBuilders.map((x) => x.build()),
+    };
+    return new CardSection(props);
   }
 
   public setHeader(value: string): this {
@@ -25,13 +36,8 @@ export class CardSectionBuilder {
     return this;
   }
 
-  public addWidget(widget: Widget): this {
-    this._props.widgets.push(widget);
-    return this;
-  }
-
-  public addWidgets(widgets: Widget[]): this {
-    this._props.widgets.push(...widgets);
+  public addWidget(...widget: WidgetBuilder[]): this {
+    this._props.widgetBuilders.push(...widget);
     return this;
   }
 }

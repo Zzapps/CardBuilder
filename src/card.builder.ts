@@ -1,31 +1,44 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-import { ActionBuilder } from './actions/action.builder';
-import { OpenLinkActionBuilder } from './actions/open-link-action.builder';
-import { Card, CardProps } from './Card';
-import { CardSection } from './card-section/card-section';
-import { CardSectionBuilder } from './card-section/card-section.builder';
-import { Footer } from './footer/footer';
-import { FooterBuilder } from './footer/footer.builder';
-import { ButtonListBuilder } from './widgets/button/button-list.builder';
-import { ImageButtonBuilder } from './widgets/button/image-button/image-button.builder';
-import { TextButtonBuilder } from './widgets/button/text-button/text-button.builder';
-import { DateTimePickerBuilder } from './widgets/datetime-picker/datetime-picker.builder';
-import { DecoratedTextBuilder } from './widgets/decorated-text/decorated-text.builder';
-import { DividerBuilder } from './widgets/divider/divider.builder';
-import { SelectionInputBuilder } from './widgets/selection-input/selection-input.builder';
-import { TextParagraphBuilder } from './widgets/text-paragraph/text-paragraph.builder';
+import { ActionBuilder } from "./actions/action.builder";
+import { OpenLinkActionBuilder } from "./actions/open-link-action.builder";
+import { Card, CardProps } from "./Card";
+import { CardSection } from "./card-section/card-section";
+import { CardSectionBuilder } from "./card-section/card-section.builder";
+import { Footer } from "./footer/footer";
+import { FooterBuilder } from "./footer/footer.builder";
+import { ButtonListBuilder } from "./widgets/button/button-list.builder";
+import { ImageButtonBuilder } from "./widgets/button/image-button/image-button.builder";
+import { TextButtonBuilder } from "./widgets/button/text-button/text-button.builder";
+import { DateTimePickerBuilder } from "./widgets/datetime-picker/datetime-picker.builder";
+import { DecoratedTextBuilder } from "./widgets/decorated-text/decorated-text.builder";
+import { DividerBuilder } from "./widgets/divider/divider.builder";
+import { SelectionInputBuilder } from "./widgets/selection-input/selection-input.builder";
+import { TextParagraphBuilder } from "./widgets/text-paragraph/text-paragraph.builder";
+
+type CardBuilderProps = {
+  sectionBuilders: CardSectionBuilder[];
+  fixedFooterBuilder?: FooterBuilder;
+  name?: string;
+};
 
 export class CardBuilder {
-  private readonly _props: CardProps = {
-    sections: [],
+  private _props: CardBuilderProps = {
+    sectionBuilders: [],
   };
 
   public build(): Card {
-    return new Card(this._props);
+    const cardProps: CardProps = {
+      sections: this._props.sectionBuilders.map((x) => x.build()),
+      ...(this._props.fixedFooterBuilder && {
+        fixedFooter: this._props.fixedFooterBuilder.build(),
+      }),
+      name: this._props.name,
+    };
+    return new Card(cardProps);
   }
 
-  public addSection(section: CardSection): this {
-    this._props.sections.push(section);
+  public addSection(...sections: CardSectionBuilder[]): this {
+    this._props.sectionBuilders.push(...sections);
     return this;
   }
 
@@ -34,8 +47,8 @@ export class CardBuilder {
     return this;
   }
 
-  public setFixedFooter(footer: Footer): this {
-    this._props.fixedFooter = footer;
+  public setFixedFooter(footer: FooterBuilder): this {
+    this._props.fixedFooterBuilder = footer;
     return this;
   }
 
@@ -94,64 +107,64 @@ export class CardBuilder {
 
 export namespace CardBuilder {
   export enum SelectionInputType {
-    CHECK_BOX = 'CHECK_BOX',
-    DROPDOWN = 'DROPDOWN',
-    RADIO_BUTTON = 'RADIO_BUTTON',
-    SWITCH = 'SWITCH',
+    CHECK_BOX = "CHECK_BOX",
+    DROPDOWN = "DROPDOWN",
+    RADIO_BUTTON = "RADIO_BUTTON",
+    SWITCH = "SWITCH",
   }
 
   export enum LoadIndicator {
-    SPINNER = 'SPINNER',
-    NONE = 'NONE',
+    SPINNER = "SPINNER",
+    NONE = "NONE",
   }
 
   export enum DateTimePickerType {
-    DATE_AND_TIME = 'DATE_AND_TIME',
-    DATE_ONLY = 'DATE_ONLY',
-    TIME_ONLY = 'TIME_ONLY',
+    DATE_AND_TIME = "DATE_AND_TIME",
+    DATE_ONLY = "DATE_ONLY",
+    TIME_ONLY = "TIME_ONLY",
   }
 
   export enum KnownIcon {
-    AIRPLANE = 'AIRPLANE',
-    BOOKMARK = 'BOOKMARK',
-    BUS = 'BUS',
-    CAR = 'CAR',
-    CLOCK = 'CLOCK',
-    CONFIRMATION_NUMBER_ICON = 'CONFIRMATION_NUMBER_ICON',
-    DOLLAR = 'DOLLAR',
-    DESCRIPTION = 'DESCRIPTION',
-    EMAIL = 'EMAIL',
-    EVENT_PERFORMER = 'EVENT_PERFORMER',
-    EVENT_SEAT = 'EVENT_SEAT',
-    FLIGHT_ARRIVAL = 'FLIGHT_ARRIVAL',
-    FLIGHT_DEPARTURE = 'FLIGHT_DEPARTURE',
-    HOTEL = 'HOTEL',
-    HOTEL_ROOM_TYPE = 'HOTEL_ROOM_TYPE',
-    INVITE = 'INVITE',
-    MAP_PIN = 'MAP_PIN',
-    MEMBERSHIP = 'MEMBERSHIP',
-    MULTIPLE_PEOPLE = 'MULTIPLE_PEOPLE',
-    NONE = 'NONE',
-    OFFER = 'OFFER',
-    PERSON = 'PERSON',
-    PHONE = 'PHONE',
-    RESTAURANT_ICON = 'RESTAURANT_ICON',
-    SHOPPING_CART = 'SHOPPING_CART',
-    STAR = 'STAR',
-    STORE = 'STORE',
-    TICKET = 'TICKET',
-    TRAIN = 'TRAIN',
-    VIDEO_CAMERA = 'VIDEO_CAMERA',
-    VIDEO_PLAY = 'VIDEO_PLAY',
+    AIRPLANE = "AIRPLANE",
+    BOOKMARK = "BOOKMARK",
+    BUS = "BUS",
+    CAR = "CAR",
+    CLOCK = "CLOCK",
+    CONFIRMATION_NUMBER_ICON = "CONFIRMATION_NUMBER_ICON",
+    DOLLAR = "DOLLAR",
+    DESCRIPTION = "DESCRIPTION",
+    EMAIL = "EMAIL",
+    EVENT_PERFORMER = "EVENT_PERFORMER",
+    EVENT_SEAT = "EVENT_SEAT",
+    FLIGHT_ARRIVAL = "FLIGHT_ARRIVAL",
+    FLIGHT_DEPARTURE = "FLIGHT_DEPARTURE",
+    HOTEL = "HOTEL",
+    HOTEL_ROOM_TYPE = "HOTEL_ROOM_TYPE",
+    INVITE = "INVITE",
+    MAP_PIN = "MAP_PIN",
+    MEMBERSHIP = "MEMBERSHIP",
+    MULTIPLE_PEOPLE = "MULTIPLE_PEOPLE",
+    NONE = "NONE",
+    OFFER = "OFFER",
+    PERSON = "PERSON",
+    PHONE = "PHONE",
+    RESTAURANT_ICON = "RESTAURANT_ICON",
+    SHOPPING_CART = "SHOPPING_CART",
+    STAR = "STAR",
+    STORE = "STORE",
+    TICKET = "TICKET",
+    TRAIN = "TRAIN",
+    VIDEO_CAMERA = "VIDEO_CAMERA",
+    VIDEO_PLAY = "VIDEO_PLAY",
   }
 
   export enum ImageType {
-    SQUARE = 'SQUARE',
-    CIRCLE = 'CIRCLE',
+    SQUARE = "SQUARE",
+    CIRCLE = "CIRCLE",
   }
 
   export enum ButtonDefaultBackgroundColor {
-    PRIMARY = 'PRIMARY_COLOR',
-    SECONDARY = 'SECONDARY_COLOR',
+    PRIMARY = "PRIMARY_COLOR",
+    SECONDARY = "SECONDARY_COLOR",
   }
 }

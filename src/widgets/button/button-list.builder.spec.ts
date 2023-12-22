@@ -1,26 +1,41 @@
-import { ButtonListBuilder } from './button-list.builder';
-import { TextButtonBuilder } from './text-button/text-button.builder';
+import { CardBuilder } from "../../card.builder";
+import { ButtonListBuilder } from "./button-list.builder";
+import { ButtonListWidget } from "./button-list.widget";
 
-describe('ButtonListBuilder', () => {
+describe("ButtonListBuilder", () => {
   let sut: ButtonListBuilder;
 
   beforeEach(() => {
     sut = new ButtonListBuilder();
   });
 
-  test('should add a button', () => {
-    const button = new TextButtonBuilder().setText('foo').build();
-    sut.addButton(button);
-    const output = sut.build();
-    expect(output.buttons).toEqual([button]);
-  });
+  describe("build", () => {
+    it("should return a ButtonListWidget", () => {
+      const buttonBuilder = CardBuilder.newTextButton().setText("foo");
+      sut.addButton(buttonBuilder);
 
-  test('should allow multiple buttons', () => {
-    const button1 = new TextButtonBuilder().setText('foo').build();
-    const button2 = new TextButtonBuilder().setText('bar').build();
-    sut.addButton(button1);
-    sut.addButton(button2);
-    const output = sut.build();
-    expect(output.buttons).toEqual([button1, button2]);
+      const widget = sut.build();
+
+      expect(widget).toBeInstanceOf(ButtonListWidget);
+    });
+
+    it("should build all contained buttons", () => {
+      const buttonBuilder1 = CardBuilder.newTextButton().setText("foo");
+      const buttonBuilder2 = CardBuilder.newImageButton().setAltText("bar");
+
+      vi.spyOn(buttonBuilder1, "build");
+      vi.spyOn(buttonBuilder2, "build");
+
+      sut.addButton(buttonBuilder1, buttonBuilder2);
+      const widget = sut.build();
+
+      expect(buttonBuilder1.build).toHaveBeenCalled();
+      expect(buttonBuilder2.build).toHaveBeenCalled();
+
+      const button1 = buttonBuilder1.build();
+      const button2 = buttonBuilder2.build();
+
+      expect(widget.buttons).toEqual([button1, button2]);
+    });
   });
 });

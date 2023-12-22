@@ -1,20 +1,34 @@
-import { Action } from '../../actions/action';
-import { CardBuilder } from '../../card.builder';
-import { SelectionInputItem } from './selection-input-item';
+import { ActionBuilder } from "../../actions/action.builder";
+import { CardBuilder } from "../../card.builder";
+import { SelectionInputItem } from "./selection-input-item";
 import {
   SelectionInputWidget,
   SelectionInputWidgetProps,
-} from './selection-input.widget';
+} from "./selection-input.widget";
+
+type SelectionInputBuilderProps = {
+  name?: string;
+  label?: string;
+  type?: CardBuilder.SelectionInputType;
+  items: SelectionInputItem[];
+  onChangeActionBuilder?: ActionBuilder;
+};
 
 export class SelectionInputBuilder {
-  private _props: SelectionInputWidgetProps = {
-    name: '',
+  private _props: SelectionInputBuilderProps = {
     type: CardBuilder.SelectionInputType.SWITCH,
     items: [],
   };
 
   public build(): SelectionInputWidget {
-    return new SelectionInputWidget(this._props);
+    const hasAction = !!this._props.onChangeActionBuilder;
+    const props: SelectionInputWidgetProps = {
+      ...this._props,
+      ...(hasAction && {
+        onChangeAction: this._props.onChangeActionBuilder!.build(),
+      }),
+    };
+    return new SelectionInputWidget(props);
   }
 
   public setName(name: string): this {
@@ -43,8 +57,8 @@ export class SelectionInputBuilder {
     return this;
   }
 
-  public setOnChangeAction(action: Action): this {
-    this._props.onChangeAction = action;
+  public setOnChangeAction(action: ActionBuilder): this {
+    this._props.onChangeActionBuilder = action;
     return this;
   }
 }

@@ -1,17 +1,24 @@
-import { ButtonWidget } from '.';
-import { ButtonListWidget, ButtonListWidgetProps } from './button-list.widget';
+import { ButtonBuilder } from ".";
+import { ButtonListWidget, ButtonListWidgetProps } from "./button-list.widget";
+
+type ButtonListBuilderProps = {
+  buttonBuilders: ButtonBuilder[];
+};
 
 export class ButtonListBuilder {
-  private _props: ButtonListWidgetProps = {
-    buttons: [],
+  private _props: ButtonListBuilderProps = {
+    buttonBuilders: [],
   };
 
   public build(): ButtonListWidget {
-    return new ButtonListWidget(this._props);
+    const props: ButtonListWidgetProps = {
+      buttons: this._props.buttonBuilders.map((x) => x.build()),
+    };
+    return new ButtonListWidget(props);
   }
 
-  public addButton(button: ButtonWidget): this {
-    this._props.buttons.push(button);
+  public addButton(...button: ButtonBuilder[]): this {
+    this._props.buttonBuilders.push(...button);
     return this;
   }
 }

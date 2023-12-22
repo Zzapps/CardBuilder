@@ -1,37 +1,47 @@
-import { TextButtonBuilder } from '../widgets/button/text-button/text-button.builder';
-import { Footer } from './footer';
-import { FooterBuilder } from './footer.builder';
+import { CardBuilder } from "../card.builder";
+import { TextButtonWidget } from "../widgets/button/text-button/text-button.widget";
+import { Footer } from "./footer";
+import { FooterBuilder } from "./footer.builder";
 
-describe('FooterBuilder', () => {
+describe("FooterBuilder", () => {
   let sut: FooterBuilder;
+  const buttonBuilder = CardBuilder.newTextButton().setText("foo");
 
   beforeEach(() => {
     sut = new FooterBuilder();
   });
 
-  test('should set the primary button', () => {
-    const button = new TextButtonBuilder().setText('foo').build();
-    const output = sut.setPrimaryButton(button).build();
+  describe("build()", () => {
+    it("should build the primary button", () => {
+      vi.spyOn(buttonBuilder, "build");
 
-    expect(output).toBeInstanceOf(Footer);
-    expect(output.primaryButton).toBe(button);
-  });
+      sut.setPrimaryButton(buttonBuilder);
+      const footer = sut.build();
 
-  test('should set the secondary button', () => {
-    const button = new TextButtonBuilder().setText('bar').build();
-    const output = sut
-      .setPrimaryButton(button)
-      .setSecondaryButton(button)
-      .build();
+      expect(buttonBuilder.build).toHaveBeenCalled();
 
-    expect(output).toBeInstanceOf(Footer);
-    expect(output.secondaryButton).toBe(button);
-  });
+      const button = buttonBuilder.build();
 
-  test('should throw if no primary button was set', () => {
-    const button = new TextButtonBuilder().setText('bar').build();
-    const act = () => sut.setSecondaryButton(button).build();
+      expect(footer).toBeInstanceOf(Footer);
+      expect(footer.primaryButton).toBeInstanceOf(TextButtonWidget);
+      expect(footer.primaryButton).toEqual(button);
+    });
 
-    expect(act).toThrow();
+    it("should build the secondary button if it exists", () => {
+      sut.setPrimaryButton(buttonBuilder);
+      const secondaryButtonBuilder = CardBuilder.newTextButton().setText("bar");
+
+      sut.setSecondaryButton(secondaryButtonBuilder);
+      vi.spyOn(secondaryButtonBuilder, "build");
+
+      sut.build();
+
+      expect(secondaryButtonBuilder.build).toHaveBeenCalled();
+    });
+
+    it("should throw if no primary button was set", () => {
+      const act = () => sut.build();
+      expect(act).toThrow();
+    });
   });
 });

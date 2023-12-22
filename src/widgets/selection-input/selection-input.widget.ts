@@ -1,9 +1,9 @@
-import { Action } from '../../actions/action';
-import { CardBuilder } from '../../card.builder';
-import { SelectionInputItem } from './selection-input-item';
+import { Action } from "../../actions/action";
+import { CardBuilder } from "../../card.builder";
+import { SelectionInputItem } from "./selection-input-item";
 
 export type SelectionInputWidgetProps = {
-  name: string;
+  name?: string;
   label?: string;
   type?: CardBuilder.SelectionInputType;
   items: SelectionInputItem[];
@@ -11,7 +11,7 @@ export type SelectionInputWidgetProps = {
 };
 
 export class SelectionInputWidget {
-  public readonly name: string;
+  public readonly name?: string;
   public readonly label?: string;
   public readonly type: CardBuilder.SelectionInputType;
   public readonly items: SelectionInputItem[];
