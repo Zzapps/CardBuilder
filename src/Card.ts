@@ -1,5 +1,5 @@
-import { CardSection } from "./card-section/card-section";
-import { Footer } from "./footer/footer";
+import { CardSection } from './card-section/card-section';
+import { Footer } from './footer/footer';
 
 export type CardProps = {
   sections: CardSection[];
@@ -21,15 +21,15 @@ export class Card {
 
 // TODO: Give this a more descriptive name
 export enum PopCard {
-  Card = "card",
-  Root = "root",
-  Name = "name",
+  Card = 'card',
+  Root = 'root',
+  Name = 'name',
 }
 
 export enum CardNavigateAction {
-  PushCard = "pushCard",
-  UpdateCard = "updateCard",
-  PopCard = "popCard",
+  PushCard = 'pushCard',
+  UpdateCard = 'updateCard',
+  PopCard = 'popCard',
 }
 
 export type NavigationSettings = {
@@ -59,18 +59,18 @@ export class Navigation {
       case PopCard.Name:
         if (!popCardName)
           throw new Error(
-            "Cannot use `popcard: name` without defining a target card name in `popCardName`",
+            'Cannot use `popcard: name` without defining a target card name in `popCardName`',
           );
         this.popToCardName = popCardName;
         break;
     }
 
-    if (navigateAction === "pushCard") {
-      if (!card) throw new Error("`card` should be set");
+    if (navigateAction === 'pushCard') {
+      if (!card) throw new Error('`card` should be set');
       this.pushCard = card;
     }
-    if (navigateAction === "updateCard") {
-      if (!card) throw new Error("`card` should be set");
+    if (navigateAction === 'updateCard') {
+      if (!card) throw new Error('`card` should be set');
       this.updateCard = card;
     }
   }

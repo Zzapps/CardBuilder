@@ -1,36 +1,36 @@
-import { TextButtonBuilder } from "./text-button.builder";
-import { ActionBuilder } from "../../../actions/action.builder";
-import { OpenLinkActionBuilder } from "../../../actions/open-link-action.builder";
+import { TextButtonBuilder } from './text-button.builder';
+import { ActionBuilder } from '../../../actions/action.builder';
+import { OpenLinkActionBuilder } from '../../../actions/open-link-action.builder';
 
-describe("TextButtonBuilder", () => {
+describe('TextButtonBuilder', () => {
   let sut: TextButtonBuilder;
 
   beforeEach(() => {
     sut = new TextButtonBuilder();
   });
 
-  it("should set the text", () => {
-    const text = "foo";
+  it('should set the text', () => {
+    const text = 'foo';
     sut.setText(text);
     const output = sut.build();
     expect(output.text).toBe(text);
   });
 
-  it("should set the altText", () => {
-    const altText = "bar";
+  it('should set the altText', () => {
+    const altText = 'bar';
     sut.setAltText(altText);
     const output = sut.build();
     expect(output.altText).toBe(altText);
   });
 
-  it("should set whether the button is disabled", () => {
+  it('should set whether the button is disabled', () => {
     const disabled = true;
     sut.setDisabled(disabled);
     const output = sut.build();
     expect(output.disabled).toBe(disabled);
   });
 
-  it.skip("should set the button color", () => {
+  it.skip('should set the button color', () => {
     sut.setBackgroundColor(0.9, 0.8, 0.7, 1);
     const output = sut.build();
     expect(output.color).toEqual({
@@ -41,8 +41,8 @@ describe("TextButtonBuilder", () => {
     });
   });
 
-  it("should set an onClick action", () => {
-    const action = new ActionBuilder().setFunctionName("my-function").build();
+  it('should set an onClick action', () => {
+    const action = new ActionBuilder().setFunctionName('my-function').build();
     sut.setOnClickAction(action);
     const output = sut.build();
     expect(output.onClick).toEqual({
@@ -50,8 +50,8 @@ describe("TextButtonBuilder", () => {
     });
   });
 
-  it("should set an onClick open link action", () => {
-    const url = "https://zzapps.nl";
+  it('should set an onClick open link action', () => {
+    const url = 'https://zzapps.nl';
     const action = new OpenLinkActionBuilder().setUrl(url).build();
     sut.setOpenLink(action);
     const output = sut.build();

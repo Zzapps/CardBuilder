@@ -1,7 +1,7 @@
-import { Action } from "../../../actions/action";
-import { getActionName } from "../../../actions/action-name-map";
-import { OpenLinkAction } from "../../../actions/open-link-action";
-import { Icon } from "../../../shared/icon";
+import { Action } from '../../../actions/action';
+import { getActionName } from '../../../actions/action-name-map';
+import { OpenLinkAction } from '../../../actions/open-link-action';
+import { Icon } from '../../../shared/icon';
 
 export type ImageButtonWidgetProps = {
   icon?: Icon;

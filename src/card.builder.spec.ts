@@ -49,7 +49,7 @@ describe('CardBuilder', () => {
   });
 
   describe('setName()', () => {
-    it("should set the card's name property", () => {
+    it('should set the card\'s name property', () => {
       const builder = new CardBuilder();
       const output = builder.setName('test card').build();
       expect(output.name).toBe('test card');

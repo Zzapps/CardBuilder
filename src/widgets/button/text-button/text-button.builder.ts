@@ -1,11 +1,11 @@
-import { Action } from "../../../actions/action";
-import { OpenLinkAction } from "../../../actions/open-link-action";
-import { Color } from "../../../shared/color";
-import { TextButtonWidget, TextButtonWidgetProps } from "./text-button.widget";
+import { Action } from '../../../actions/action';
+import { OpenLinkAction } from '../../../actions/open-link-action';
+import { Color } from '../../../shared/color';
+import { TextButtonWidget, TextButtonWidgetProps } from './text-button.widget';
 
 export class TextButtonBuilder {
   private _props: TextButtonWidgetProps = {
-    text: "",
+    text: '',
   };
 
   public build(): TextButtonWidget {

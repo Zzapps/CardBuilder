@@ -1,11 +1,11 @@
-import { Action } from "../../../actions/action";
-import { OpenLinkAction } from "../../../actions/open-link-action";
-import { CardBuilder } from "../../../card.builder";
-import { IconBuilder } from "../../../shared/icon.builder";
+import { Action } from '../../../actions/action';
+import { OpenLinkAction } from '../../../actions/open-link-action';
+import { CardBuilder } from '../../../card.builder';
+import { IconBuilder } from '../../../shared/icon.builder';
 import {
   ImageButtonWidget,
   ImageButtonWidgetProps,
-} from "./image-button.widget";
+} from './image-button.widget';
 
 export class ImageButtonBuilder {
   private _iconBuilder: IconBuilder;
