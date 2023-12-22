@@ -1,6 +1,6 @@
-import { Action } from "../../actions/action";
-import { CardBuilder } from "../../card.builder";
-import { SelectionInputItem } from "./selection-input-item";
+import { Action } from '../../actions/action';
+import { CardBuilder } from '../../card.builder';
+import { SelectionInputItem } from './selection-input-item';
 
 export type SelectionInputWidgetProps = {
   name?: string;

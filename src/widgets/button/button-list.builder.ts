@@ -1,5 +1,5 @@
-import { ButtonBuilder } from ".";
-import { ButtonListWidget, ButtonListWidgetProps } from "./button-list.widget";
+import { ButtonBuilder } from '.';
+import { ButtonListWidget, ButtonListWidgetProps } from './button-list.widget';
 
 type ButtonListBuilderProps = {
   buttonBuilders: ButtonBuilder[];

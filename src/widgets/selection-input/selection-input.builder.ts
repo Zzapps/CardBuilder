@@ -1,10 +1,10 @@
-import { ActionBuilder } from "../../actions/action.builder";
-import { CardBuilder } from "../../card.builder";
-import { SelectionInputItem } from "./selection-input-item";
+import { ActionBuilder } from '../../actions/action.builder';
+import { CardBuilder } from '../../card.builder';
+import { SelectionInputItem } from './selection-input-item';
 import {
   SelectionInputWidget,
   SelectionInputWidgetProps,
-} from "./selection-input.widget";
+} from './selection-input.widget';
 
 type SelectionInputBuilderProps = {
   name?: string;

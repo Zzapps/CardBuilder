@@ -1,5 +1,5 @@
-import { WidgetBuilder } from "../widgets";
-import { CardSection, CardSectionProps } from "./card-section";
+import { WidgetBuilder } from '../widgets';
+import { CardSection, CardSectionProps } from './card-section';
 
 type CardSectionBuilderProps = {
   header?: string;

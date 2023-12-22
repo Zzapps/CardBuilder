@@ -1,19 +1,19 @@
-import { CardBuilder } from "../card.builder";
-import { TextButtonWidget } from "../widgets/button/text-button/text-button.widget";
-import { Footer } from "./footer";
-import { FooterBuilder } from "./footer.builder";
+import { CardBuilder } from '../card.builder';
+import { TextButtonWidget } from '../widgets/button/text-button/text-button.widget';
+import { Footer } from './footer';
+import { FooterBuilder } from './footer.builder';
 
-describe("FooterBuilder", () => {
+describe('FooterBuilder', () => {
   let sut: FooterBuilder;
-  const buttonBuilder = CardBuilder.newTextButton().setText("foo");
+  const buttonBuilder = CardBuilder.newTextButton().setText('foo');
 
   beforeEach(() => {
     sut = new FooterBuilder();
   });
 
-  describe("build()", () => {
-    it("should build the primary button", () => {
-      vi.spyOn(buttonBuilder, "build");
+  describe('build()', () => {
+    it('should build the primary button', () => {
+      vi.spyOn(buttonBuilder, 'build');
 
       sut.setPrimaryButton(buttonBuilder);
       const footer = sut.build();
@@ -27,19 +27,19 @@ describe("FooterBuilder", () => {
       expect(footer.primaryButton).toEqual(button);
     });
 
-    it("should build the secondary button if it exists", () => {
+    it('should build the secondary button if it exists', () => {
       sut.setPrimaryButton(buttonBuilder);
-      const secondaryButtonBuilder = CardBuilder.newTextButton().setText("bar");
+      const secondaryButtonBuilder = CardBuilder.newTextButton().setText('bar');
 
       sut.setSecondaryButton(secondaryButtonBuilder);
-      vi.spyOn(secondaryButtonBuilder, "build");
+      vi.spyOn(secondaryButtonBuilder, 'build');
 
       sut.build();
 
       expect(secondaryButtonBuilder.build).toHaveBeenCalled();
     });
 
-    it("should throw if no primary button was set", () => {
+    it('should throw if no primary button was set', () => {
       const act = () => sut.build();
       expect(act).toThrow();
     });

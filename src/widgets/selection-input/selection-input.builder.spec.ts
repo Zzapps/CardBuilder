@@ -1,25 +1,25 @@
-import { CardBuilder } from "../../card.builder";
-import { SelectionInputItem } from "./selection-input-item";
-import { SelectionInputBuilder } from "./selection-input.builder";
-import { SelectionInputWidget } from "./selection-input.widget";
+import { CardBuilder } from '../../card.builder';
+import { SelectionInputItem } from './selection-input-item';
+import { SelectionInputBuilder } from './selection-input.builder';
+import { SelectionInputWidget } from './selection-input.widget';
 
-describe("SelectionInputBuilder", () => {
+describe('SelectionInputBuilder', () => {
   let sut: SelectionInputBuilder;
 
   beforeEach(() => {
     sut = new SelectionInputBuilder();
   });
 
-  describe("build", () => {
-    it("should return a SelectionInputWidget", () => {
-      sut.setName("foo");
+  describe('build', () => {
+    it('should return a SelectionInputWidget', () => {
+      sut.setName('foo');
       const widget = sut.build();
       expect(widget).toBeInstanceOf(SelectionInputWidget);
     });
 
-    it("should build the onChangeAction if it is set", () => {
-      const actionBuilder = CardBuilder.newAction().setFunctionName("foo");
-      vi.spyOn(actionBuilder, "build");
+    it('should build the onChangeAction if it is set', () => {
+      const actionBuilder = CardBuilder.newAction().setFunctionName('foo');
+      vi.spyOn(actionBuilder, 'build');
 
       sut.setOnChangeAction(actionBuilder);
       const widget = sut.build();
@@ -30,17 +30,17 @@ describe("SelectionInputBuilder", () => {
       expect(widget.onChangeAction).toEqual(action);
     });
 
-    it("should default to SWITCH input type", () => {
-      sut.setName("foo");
+    it('should default to SWITCH input type', () => {
+      sut.setName('foo');
       const widget = sut.build();
       expect(widget.type).toEqual(CardBuilder.SelectionInputType.SWITCH);
     });
   });
 
-  describe("addItem())", () => {
-    it("should add an item with text and value", () => {
-      const itemKey = "foo";
-      const itemValue = "bar";
+  describe('addItem())', () => {
+    it('should add an item with text and value', () => {
+      const itemKey = 'foo';
+      const itemValue = 'bar';
 
       sut.addItem(itemKey, itemValue);
 
@@ -55,9 +55,9 @@ describe("SelectionInputBuilder", () => {
       });
     });
 
-    it("should add an item with selected boolean", () => {
-      const itemKey = "foo";
-      const itemValue = "bar";
+    it('should add an item with selected boolean', () => {
+      const itemKey = 'foo';
+      const itemValue = 'bar';
       const itemIsSelected = true;
 
       sut.addItem(itemKey, itemValue, itemIsSelected);
@@ -73,11 +73,11 @@ describe("SelectionInputBuilder", () => {
       });
     });
 
-    it("should add multiple items", () => {
-      const item1Key = "foo";
-      const item2Key = "foo2";
-      const item1Value = "bar";
-      const item2Value = "bar2";
+    it('should add multiple items', () => {
+      const item1Key = 'foo';
+      const item2Key = 'foo2';
+      const item1Value = 'bar';
+      const item2Value = 'bar2';
 
       sut.addItem(item1Key, item1Value);
       sut.addItem(item2Key, item2Value, true);

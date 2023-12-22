@@ -1,5 +1,5 @@
-import { ButtonBuilder } from "../widgets/button";
-import { Footer, FooterProps } from "./footer";
+import { ButtonBuilder } from '../widgets/button';
+import { Footer, FooterProps } from './footer';
 
 type FooterBuilderProps = {
   primaryButtonBuilder?: ButtonBuilder;
@@ -11,7 +11,7 @@ export class FooterBuilder {
 
   public build(): Footer {
     if (!this._props.primaryButtonBuilder)
-      throw new Error("Footer requires a primary button");
+      throw new Error('Footer requires a primary button');
 
     const hasSecondary = !!this._props.secondaryButtonBuilder;
 

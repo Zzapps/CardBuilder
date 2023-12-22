@@ -1,17 +1,17 @@
-import { CardBuilder } from "../../card.builder";
-import { ButtonListBuilder } from "./button-list.builder";
-import { ButtonListWidget } from "./button-list.widget";
+import { CardBuilder } from '../../card.builder';
+import { ButtonListBuilder } from './button-list.builder';
+import { ButtonListWidget } from './button-list.widget';
 
-describe("ButtonListBuilder", () => {
+describe('ButtonListBuilder', () => {
   let sut: ButtonListBuilder;
 
   beforeEach(() => {
     sut = new ButtonListBuilder();
   });
 
-  describe("build", () => {
-    it("should return a ButtonListWidget", () => {
-      const buttonBuilder = CardBuilder.newTextButton().setText("foo");
+  describe('build', () => {
+    it('should return a ButtonListWidget', () => {
+      const buttonBuilder = CardBuilder.newTextButton().setText('foo');
       sut.addButton(buttonBuilder);
 
       const widget = sut.build();
@@ -19,12 +19,12 @@ describe("ButtonListBuilder", () => {
       expect(widget).toBeInstanceOf(ButtonListWidget);
     });
 
-    it("should build all contained buttons", () => {
-      const buttonBuilder1 = CardBuilder.newTextButton().setText("foo");
-      const buttonBuilder2 = CardBuilder.newImageButton().setAltText("bar");
+    it('should build all contained buttons', () => {
+      const buttonBuilder1 = CardBuilder.newTextButton().setText('foo');
+      const buttonBuilder2 = CardBuilder.newImageButton().setAltText('bar');
 
-      vi.spyOn(buttonBuilder1, "build");
-      vi.spyOn(buttonBuilder2, "build");
+      vi.spyOn(buttonBuilder1, 'build');
+      vi.spyOn(buttonBuilder2, 'build');
 
       sut.addButton(buttonBuilder1, buttonBuilder2);
       const widget = sut.build();
