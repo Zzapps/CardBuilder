@@ -1,4 +1,4 @@
-import { CardBuilder } from '../card.builder';
+import { CardService } from '../card-service';
 import { Action, ActionProps } from './action';
 
 export class ActionBuilder {
@@ -26,7 +26,7 @@ export class ActionBuilder {
     return this;
   }
 
-  public setLoadIndicator(indicator: CardBuilder.LoadIndicator): this {
+  public setLoadIndicator(indicator: CardService.LoadIndicator): this {
     this._props.loadIndicator = indicator;
     return this;
   }

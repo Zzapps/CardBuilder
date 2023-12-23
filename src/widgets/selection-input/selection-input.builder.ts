@@ -1,5 +1,5 @@
 import { ActionBuilder } from '../../actions/action.builder';
-import { CardBuilder } from '../../card.builder';
+import { CardService } from '../../card-service';
 import { SelectionInputItem } from './selection-input-item';
 import {
   SelectionInputWidget,
@@ -9,14 +9,14 @@ import {
 type SelectionInputBuilderProps = {
   name?: string;
   label?: string;
-  type?: CardBuilder.SelectionInputType;
+  type?: CardService.SelectionInputType;
   items: SelectionInputItem[];
   onChangeActionBuilder?: ActionBuilder;
 };
 
 export class SelectionInputBuilder {
   private _props: SelectionInputBuilderProps = {
-    type: CardBuilder.SelectionInputType.SWITCH,
+    type: CardService.SelectionInputType.SWITCH,
     items: [],
   };
 
@@ -36,7 +36,7 @@ export class SelectionInputBuilder {
     return this;
   }
 
-  public setType(type: CardBuilder.SelectionInputType): this {
+  public setType(type: CardService.SelectionInputType): this {
     this._props.type = type;
     return this;
   }

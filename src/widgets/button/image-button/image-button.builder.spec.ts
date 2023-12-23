@@ -1,13 +1,13 @@
 import { ActionBuilder } from '../../../actions/action.builder';
 import { OpenLinkActionBuilder } from '../../../actions/open-link-action.builder';
-import { CardBuilder } from '../../../card.builder';
+import { CardService } from '../../../card-service';
 import { IconBuilder } from '../../../shared/icon.builder';
 import { ImageButtonBuilder } from './image-button.builder';
 
 describe('ImageButtonBuilder', () => {
   let sut: ImageButtonBuilder;
   let iconBuilder: IconBuilder;
-  const icon = CardBuilder.KnownIcon.AIRPLANE;
+  const icon = CardService.KnownIcon.AIRPLANE;
 
   beforeEach(() => {
     sut = new ImageButtonBuilder();

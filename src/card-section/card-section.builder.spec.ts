@@ -1,5 +1,5 @@
 import { CardSectionBuilder } from '../card-section/card-section.builder';
-import { CardBuilder } from '../card.builder';
+import { CardService } from '../card-service';
 import { SelectionInputBuilder } from '../widgets/selection-input/selection-input.builder';
 
 describe('CardSectionBuilder', () => {
@@ -11,8 +11,8 @@ describe('CardSectionBuilder', () => {
 
   describe('build()', () => {
     it('should build all contained widgets', () => {
-      const widgetBuilder1 = CardBuilder.newTextParagraph('foo');
-      const widgetBuilder2 = CardBuilder.newSelectionInput().setName('bar');
+      const widgetBuilder1 = CardService.newTextParagraph('foo');
+      const widgetBuilder2 = CardService.newSelectionInput().setName('bar');
 
       sut.addWidget(widgetBuilder1, widgetBuilder2);
 

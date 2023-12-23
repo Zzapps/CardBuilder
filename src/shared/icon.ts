@@ -1,20 +1,20 @@
-import { CardBuilder } from '../card.builder';
+import { CardService } from '../card-service';
 
 export type IconProps = {
-  knownIcon?: CardBuilder.KnownIcon;
+  knownIcon?: CardService.KnownIcon;
   iconUrl?: string;
-  imageType?: CardBuilder.ImageType;
+  imageType?: CardService.ImageType;
   altText?: string;
 };
 
 export class Icon {
-  public readonly knownIcon?: CardBuilder.KnownIcon;
+  public readonly knownIcon?: CardService.KnownIcon;
   public readonly iconUrl?: string;
-  public readonly imageType: CardBuilder.ImageType;
+  public readonly imageType: CardService.ImageType;
   public readonly altText?: string;
 
   public constructor(props: IconProps) {
-    this.imageType = props.imageType || CardBuilder.ImageType.SQUARE;
+    this.imageType = props.imageType || CardService.ImageType.SQUARE;
 
     if (props.knownIcon) this.knownIcon = props.knownIcon;
     if (props.iconUrl) this.iconUrl = props.iconUrl;

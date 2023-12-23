@@ -1,6 +1,6 @@
 import { Action } from '../../../actions/action';
 import { OpenLinkAction } from '../../../actions/open-link-action';
-import { CardBuilder } from '../../../card.builder';
+import { CardService } from '../../../card-service';
 import { IconBuilder } from '../../../shared/icon.builder';
 import {
   ImageButtonWidget,
@@ -21,7 +21,7 @@ export class ImageButtonBuilder {
     return new ImageButtonWidget(this._props);
   }
 
-  public setIcon(icon: CardBuilder.KnownIcon): this {
+  public setIcon(icon: CardService.KnownIcon): this {
     this._iconBuilder.setKnownIcon(icon);
     return this;
   }

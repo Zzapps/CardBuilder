@@ -1,11 +1,11 @@
-import { CardBuilder } from '../card.builder';
+import { CardService } from '../card-service';
 import { TextButtonWidget } from '../widgets/button/text-button/text-button.widget';
 import { Footer } from './footer';
 import { FooterBuilder } from './footer.builder';
 
 describe('FooterBuilder', () => {
   let sut: FooterBuilder;
-  const buttonBuilder = CardBuilder.newTextButton().setText('foo');
+  const buttonBuilder = CardService.newTextButton().setText('foo');
 
   beforeEach(() => {
     sut = new FooterBuilder();
@@ -29,7 +29,7 @@ describe('FooterBuilder', () => {
 
     it('should build the secondary button if it exists', () => {
       sut.setPrimaryButton(buttonBuilder);
-      const secondaryButtonBuilder = CardBuilder.newTextButton().setText('bar');
+      const secondaryButtonBuilder = CardService.newTextButton().setText('bar');
 
       sut.setSecondaryButton(secondaryButtonBuilder);
       vi.spyOn(secondaryButtonBuilder, 'build');

@@ -1,4 +1,4 @@
-import { CardBuilder } from '../../card.builder';
+import { CardService } from '../../card-service';
 import { ButtonListBuilder } from './button-list.builder';
 import { ButtonListWidget } from './button-list.widget';
 
@@ -11,7 +11,7 @@ describe('ButtonListBuilder', () => {
 
   describe('build', () => {
     it('should return a ButtonListWidget', () => {
-      const buttonBuilder = CardBuilder.newTextButton().setText('foo');
+      const buttonBuilder = CardService.newTextButton().setText('foo');
       sut.addButton(buttonBuilder);
 
       const widget = sut.build();
@@ -20,8 +20,8 @@ describe('ButtonListBuilder', () => {
     });
 
     it('should build all contained buttons', () => {
-      const buttonBuilder1 = CardBuilder.newTextButton().setText('foo');
-      const buttonBuilder2 = CardBuilder.newImageButton().setAltText('bar');
+      const buttonBuilder1 = CardService.newTextButton().setText('foo');
+      const buttonBuilder2 = CardService.newImageButton().setAltText('bar');
 
       vi.spyOn(buttonBuilder1, 'build');
       vi.spyOn(buttonBuilder2, 'build');

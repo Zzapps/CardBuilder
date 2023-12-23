@@ -1,10 +1,11 @@
 import { Icon } from './icon';
 import { CardBuilder } from '../card.builder';
 import { IconBuilder } from './icon.builder';
+import { CardService } from '../card-service';
 
 describe('IconBuilder', () => {
   let sut: IconBuilder;
-  const icon: CardBuilder.KnownIcon = CardBuilder.KnownIcon.AIRPLANE;
+  const icon: CardService.KnownIcon = CardService.KnownIcon.AIRPLANE;
   const altText = 'test alt text';
 
   beforeEach(() => {
@@ -21,7 +22,7 @@ describe('IconBuilder', () => {
       const output = sut.setKnownIcon(icon).build();
       expect(output).toEqual(
         expect.objectContaining({
-          imageType: CardBuilder.ImageType.SQUARE,
+          imageType: CardService.ImageType.SQUARE,
         }),
       );
     });
@@ -78,13 +79,13 @@ describe('IconBuilder', () => {
     it('should set the image type', () => {
       const output = sut
         .setKnownIcon(icon)
-        .setImageType(CardBuilder.ImageType.CIRCLE)
+        .setImageType(CardService.ImageType.CIRCLE)
         .build();
 
       expect(output).toEqual(
         expect.objectContaining({
           knownIcon: icon,
-          imageType: CardBuilder.ImageType.CIRCLE,
+          imageType: CardService.ImageType.CIRCLE,
         }),
       );
     });

@@ -1,4 +1,5 @@
 import { Card } from './Card';
+import { CardService } from './card-service';
 import { ActionBuilder } from './actions/action.builder';
 import { OpenLinkActionBuilder } from './actions/open-link-action.builder';
 import { CardSection } from './card-section/card-section';
@@ -21,8 +22,8 @@ describe('CardBuilder', () => {
 
   describe('build()', () => {
     it('should build all sections', () => {
-      const sectionBuilder1 = CardBuilder.newCardSection().setHeader('foo');
-      const sectionBuilder2 = CardBuilder.newCardSection().setHeader('bar');
+      const sectionBuilder1 = CardService.newCardSection().setHeader('foo');
+      const sectionBuilder2 = CardService.newCardSection().setHeader('bar');
 
       vi.spyOn(sectionBuilder1, 'build');
       vi.spyOn(sectionBuilder2, 'build');
@@ -74,52 +75,52 @@ describe('CardBuilder', () => {
 
   describe('builders', () => {
     it('should return a SectionBuilder', () => {
-      const output = CardBuilder.newCardSection();
+      const output = CardService.newCardSection();
       expect(output).toBeInstanceOf(CardSectionBuilder);
     });
 
     it('should return a SelectionInputBuilder', () => {
-      const output = CardBuilder.newSelectionInput();
+      const output = CardService.newSelectionInput();
       expect(output).toBeInstanceOf(SelectionInputBuilder);
     });
 
     it('should return an ActionBuilder', () => {
-      const output = CardBuilder.newAction();
+      const output = CardService.newAction();
       expect(output).toBeInstanceOf(ActionBuilder);
     });
 
     it('should return a TextButtonBuilder', () => {
-      const output = CardBuilder.newTextButton();
+      const output = CardService.newTextButton();
       expect(output).toBeInstanceOf(TextButtonBuilder);
     });
 
     it('should return an ImageButtonBuilder', () => {
-      const output = CardBuilder.newImageButton();
+      const output = CardService.newImageButton();
       expect(output).toBeInstanceOf(ImageButtonBuilder);
     });
 
     it('should return a ButtonListBuilder', () => {
-      const output = CardBuilder.newButtonSet();
+      const output = CardService.newButtonSet();
       expect(output).toBeInstanceOf(ButtonListBuilder);
     });
 
     it('should return a TextParagraphBuilder', () => {
-      const output = CardBuilder.newTextParagraph();
+      const output = CardService.newTextParagraph();
       expect(output).toBeInstanceOf(TextParagraphBuilder);
     });
 
     it('should return an OpenLinkActionBuilder', () => {
-      const output = CardBuilder.newOpenLink();
+      const output = CardService.newOpenLink();
       expect(output).toBeInstanceOf(OpenLinkActionBuilder);
     });
 
     it('should return a FooterBuilder', () => {
-      const output = CardBuilder.newFixedFooter();
+      const output = CardService.newFixedFooter();
       expect(output).toBeInstanceOf(FooterBuilder);
     });
 
     it('should return a DateTimePickerBuilder', () => {
-      const output = CardBuilder.newDateTimePicker();
+      const output = CardService.newDateTimePicker();
       expect(output).toBeInstanceOf(DateTimePickerBuilder);
     });
   });

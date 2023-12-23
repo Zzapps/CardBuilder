@@ -1,4 +1,4 @@
-import { CardBuilder } from '../../card.builder';
+import { CardService } from '../../card-service';
 import { DateTimePickerBuilder } from './datetime-picker.builder';
 import { DateTimePickerWidget } from './datetime-picker.widget';
 
@@ -18,6 +18,6 @@ describe('DateTimePickerBuilder', () => {
 
   test('should set type to DATE_AND_TIME by default', () => {
     const output = sut.build();
-    expect(output.type).toBe(CardBuilder.DateTimePickerType.DATE_AND_TIME);
+    expect(output.type).toBe(CardService.DateTimePickerType.DATE_AND_TIME);
   });
 });

@@ -1,4 +1,4 @@
-import { CardBuilder } from '../../card.builder';
+import { CardService } from '../../card-service';
 import { SelectionInputItem } from './selection-input-item';
 import { SelectionInputBuilder } from './selection-input.builder';
 import { SelectionInputWidget } from './selection-input.widget';
@@ -18,7 +18,7 @@ describe('SelectionInputBuilder', () => {
     });
 
     it('should build the onChangeAction if it is set', () => {
-      const actionBuilder = CardBuilder.newAction().setFunctionName('foo');
+      const actionBuilder = CardService.newAction().setFunctionName('foo');
       vi.spyOn(actionBuilder, 'build');
 
       sut.setOnChangeAction(actionBuilder);
@@ -33,7 +33,7 @@ describe('SelectionInputBuilder', () => {
     it('should default to SWITCH input type', () => {
       sut.setName('foo');
       const widget = sut.build();
-      expect(widget.type).toEqual(CardBuilder.SelectionInputType.SWITCH);
+      expect(widget.type).toEqual(CardService.SelectionInputType.SWITCH);
     });
   });
 

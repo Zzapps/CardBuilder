@@ -1,16 +1,16 @@
-import { CardBuilder } from '../card.builder';
+import { CardService } from '../card-service';
 import { Icon, IconProps } from './icon';
 
 export class IconBuilder {
   private _props: IconProps = {
-    imageType: CardBuilder.ImageType.SQUARE,
+    imageType: CardService.ImageType.SQUARE,
   };
 
   public build(): Icon {
     return new Icon(this._props);
   }
 
-  public setKnownIcon(icon: CardBuilder.KnownIcon): this {
+  public setKnownIcon(icon: CardService.KnownIcon): this {
     this._props.iconUrl = undefined;
     this._props.knownIcon = icon;
     return this;
@@ -22,7 +22,7 @@ export class IconBuilder {
     return this;
   }
 
-  public setImageType(type: CardBuilder.ImageType): this {
+  public setImageType(type: CardService.ImageType): this {
     this._props.imageType = type;
     return this;
   }

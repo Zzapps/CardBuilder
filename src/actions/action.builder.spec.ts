@@ -1,4 +1,4 @@
-import { CardBuilder } from '../card.builder';
+import { CardService } from '../card-service';
 import { ActionBuilder } from './action.builder';
 
 describe('ActionBuilder', () => {
@@ -38,7 +38,7 @@ describe('ActionBuilder', () => {
   });
 
   test('sets the load indicator', () => {
-    const indicator = CardBuilder.LoadIndicator.SPINNER;
+    const indicator = CardService.LoadIndicator.SPINNER;
     sut.setLoadIndicator(indicator);
     const output = sut.build();
     expect(output.loadIndicator).toEqual(indicator);

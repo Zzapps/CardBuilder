@@ -1,15 +1,15 @@
-import { CardBuilder } from '../card.builder';
+import { CardService } from '../card-service';
 
 export type ActionProps = {
   function: string;
   parameters: { [key: string]: string };
-  loadIndicator?: CardBuilder.LoadIndicator;
+  loadIndicator?: CardService.LoadIndicator;
 };
 
 export class Action {
   public readonly function: string;
   public readonly parameters: { key: string; value: string }[] = [];
-  public readonly loadIndicator?: CardBuilder.LoadIndicator;
+  public readonly loadIndicator?: CardService.LoadIndicator;
 
   public constructor(props: ActionProps) {
     this.function = props.function;
