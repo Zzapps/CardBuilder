@@ -1,6 +1,6 @@
 {
   "name": "cardbuilder",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A helper library to create Google Workspace Add-on UIs",
   "keywords": ["Google Workspace", "Zzapps", "Google Card UI"],
   "repository": {
