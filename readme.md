@@ -20,3 +20,30 @@ Here are the features we are working on:
 - [ ] Full CardBuilder
 - [ ] A helper for navigating through the card stack
 - [ ] More icons
+
+# Using the this package
+Almost everything can be accessed from the `CardService` class. This class contains all the static methods to access the builders for card elements. The `CardService` namespace also contains all enums.
+
+An example:
+
+```ts
+import { CardService } from 'cardbuilder'
+
+// Create some widgets
+const selectionInput = CardService.newSelectionInput()
+    .setType(CardService.selectionInputType.DROPDOWN)
+    .setLabel('My dropdown')
+    .addItem('The default option', 'foo', true)
+    .addItem('Another option', 'bar');
+
+// Note that passing a string into this call immediately sets the text on the returned builder instance
+const textParagraph = CardService.newTextParagraph('Hello world')
+
+// Create a section and add the widgets
+// Note that addWidget() can take any number of widgets as argument, but also supports chaining
+const section = CardService.newCardSection().addWidget(selectionInput, textParagraph)
+
+// Create a card and add the section
+const card = CardService.newCardBuilder().addSection(section)
+```
+
