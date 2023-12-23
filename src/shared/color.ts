@@ -1,5 +1,5 @@
 export class Color {
-  public constructor(
+  protected constructor(
     public readonly red: number,
     public readonly green: number,
     public readonly blue: number,
@@ -28,6 +28,15 @@ export class Color {
     }
 
     return new Color(r, g, b, a);
+  }
+
+  public static fromRGB(
+    red: number,
+    green: number,
+    blue: number,
+    alpha: number = 1,
+  ): Color {
+    return new Color(red, green, blue, alpha);
   }
 
   private roundDecimals(value: number): number {
