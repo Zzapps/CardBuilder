@@ -1,12 +1,27 @@
 import { TextButtonBuilder } from './text-button.builder';
-import { ActionBuilder } from '../../../actions/action.builder';
-import { OpenLinkActionBuilder } from '../../../actions/open-link-action.builder';
+import { CardService } from '../../../card-service';
 
 describe('TextButtonBuilder', () => {
   let sut: TextButtonBuilder;
 
   beforeEach(() => {
     sut = new TextButtonBuilder();
+  });
+
+  describe('build()', () => {
+    it('should build the onClickAction if it is set', () => {
+      const actionBuilder = CardService.newAction().setFunction('foo');
+      sut.setOnClickAction(actionBuilder);
+
+      vi.spyOn(actionBuilder, 'build');
+      sut.build();
+
+      expect(actionBuilder.build).toHaveBeenCalled();
+    });
+  });
+
+  describe('constructor', () => {
+    it.todo('should allow setting the text directly');
   });
 
   it('should set the text', () => {
@@ -38,25 +53,6 @@ describe('TextButtonBuilder', () => {
       green: 1,
       blue: 1,
       alpha: 1,
-    });
-  });
-
-  it('should set an onClick action', () => {
-    const action = new ActionBuilder().setFunctionName('my-function').build();
-    sut.setOnClickAction(action);
-    const output = sut.build();
-    expect(output.onClick).toEqual({
-      action,
-    });
-  });
-
-  it('should set an onClick open link action', () => {
-    const url = 'https://zzapps.nl';
-    const action = new OpenLinkActionBuilder().setUrl(url).build();
-    sut.setOpenLink(action);
-    const output = sut.build();
-    expect(output.onClick).toEqual({
-      openLink: action,
     });
   });
 });

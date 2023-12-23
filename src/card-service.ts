@@ -128,8 +128,8 @@ export namespace CardService {
     CIRCLE = 'CIRCLE',
   }
 
-  export enum ButtonDefaultBackgroundColor {
-    PRIMARY = 'PRIMARY_COLOR',
-    SECONDARY = 'SECONDARY_COLOR',
+  export enum TextButtonStyle {
+    TEXT = 'TEXT',
+    FILLED = 'FILLED',
   }
 }
