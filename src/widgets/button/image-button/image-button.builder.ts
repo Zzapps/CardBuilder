@@ -1,15 +1,24 @@
 import { Action } from '../../../actions/action';
+import { ActionBuilder } from '../../../actions/action.builder';
 import { OpenLinkAction } from '../../../actions/open-link-action';
+import { OpenLinkActionBuilder } from '../../../actions/open-link-action.builder';
 import { CardService } from '../../../card-service';
+import { Icon } from '../../../shared/icon';
 import { IconBuilder } from '../../../shared/icon.builder';
 import {
   ImageButtonWidget,
   ImageButtonWidgetProps,
 } from './image-button.widget';
 
+type ImageBUttonBuilderProps = {
+  icon?: Icon;
+  disabled?: boolean;
+  onClickBuilder?: ActionBuilder | OpenLinkActionBuilder;
+};
+
 export class ImageButtonBuilder {
   private _iconBuilder: IconBuilder;
-  private _props: ImageButtonWidgetProps = {};
+  private _props: ImageBUttonBuilderProps = {};
 
   public constructor() {
     this._iconBuilder = new IconBuilder();
@@ -18,7 +27,16 @@ export class ImageButtonBuilder {
   public build(): ImageButtonWidget {
     const icon = this._iconBuilder.build();
     this._props.icon = icon;
-    return new ImageButtonWidget(this._props);
+
+    const hasOnClick = !!this._props.onClickBuilder;
+
+    const props: ImageButtonWidgetProps = {
+      ...this._props,
+      ...(hasOnClick && {
+        onClick: this._props.onClickBuilder!.build(),
+      }),
+    };
+    return new ImageButtonWidget(props);
   }
 
   public setIcon(icon: CardService.KnownIcon): this {
@@ -41,13 +59,13 @@ export class ImageButtonBuilder {
     return this;
   }
 
-  public setOpenLink(action: OpenLinkAction): this {
-    this._props.onClick = action;
+  public setOpenLink(action: OpenLinkActionBuilder): this {
+    this._props.onClickBuilder = action;
     return this;
   }
 
-  public setOnClickAction(action: Action | OpenLinkAction): this {
-    this._props.onClick = action;
+  public setOnClickAction(action: ActionBuilder | OpenLinkActionBuilder): this {
+    this._props.onClickBuilder = action;
     return this;
   }
 }

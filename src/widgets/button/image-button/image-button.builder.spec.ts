@@ -1,5 +1,4 @@
-import { ActionBuilder } from '../../../actions/action.builder';
-import { OpenLinkActionBuilder } from '../../../actions/open-link-action.builder';
+import { Action } from '../../../actions/action';
 import { CardService } from '../../../card-service';
 import { IconBuilder } from '../../../shared/icon.builder';
 import { ImageButtonBuilder } from './image-button.builder';
@@ -12,6 +11,23 @@ describe('ImageButtonBuilder', () => {
   beforeEach(() => {
     sut = new ImageButtonBuilder();
     iconBuilder = new IconBuilder();
+  });
+
+  describe('build()', () => {
+    it('should build contained actions if they are set', () => {
+      const actionBuilder = CardService.newAction().setFunction('foo');
+      vi.spyOn(actionBuilder, 'build');
+
+      sut.setOnClickAction(actionBuilder);
+      const output = sut.build();
+
+      expect(actionBuilder.build).toHaveBeenCalled();
+
+      const action = actionBuilder.build();
+
+      expect(output.onClick?.action).toBeInstanceOf(Action);
+      expect(output.onClick?.action).toEqual(action);
+    });
   });
 
   describe('setIcon()', () => {
@@ -35,27 +51,6 @@ describe('ImageButtonBuilder', () => {
     it('should set the disabled value', () => {
       const output = sut.setDisabled(true).build();
       expect(output.disabled).toBeTruthy();
-    });
-  });
-
-  describe('setOpenLink())', () => {
-    it('should set an open link action', () => {
-      const url = 'https://zzapps.nl';
-      const action = new OpenLinkActionBuilder().setUrl(url).build();
-      const output = sut.setOpenLink(action).build();
-      expect(output.onClick).toEqual({
-        openLink: action,
-      });
-    });
-  });
-
-  describe('setOnClickAction()', () => {
-    it('should set an onclick action', () => {
-      const action = new ActionBuilder().setFunctionName('my-function').build();
-      const output = sut.setOnClickAction(action).build();
-      expect(output.onClick).toEqual({
-        action,
-      });
     });
   });
 });
