@@ -11,8 +11,24 @@ import { DecoratedTextBuilder } from './widgets/decorated-text/decorated-text.bu
 import { DividerBuilder } from './widgets/divider/divider.builder';
 import { SelectionInputBuilder } from './widgets/selection-input/selection-input.builder';
 import { TextParagraphBuilder } from './widgets/text-paragraph/text-paragraph.builder';
+import { Color } from './shared/color';
+
+type CardServiceConfig = {
+  primaryColor?: Color;
+  secondaryColor?: Color;
+};
 
 export class CardService {
+  private static _config: CardServiceConfig = {};
+
+  public static setConfig(config: CardServiceConfig): void {
+    this._config = config;
+  }
+
+  public static getOptions(): CardServiceConfig {
+    return this._config;
+  }
+
   public static newCardBuilder(): CardBuilder {
     return new CardBuilder();
   }
@@ -37,8 +53,14 @@ export class CardService {
     return new DecoratedTextBuilder();
   }
 
-  public static newTextButton(): TextButtonBuilder {
-    return new TextButtonBuilder();
+  public static newTextButton(text?: string): TextButtonBuilder {
+    const builder = new TextButtonBuilder();
+
+    if (text) {
+      builder.setText(text);
+    }
+
+    return builder;
   }
 
   public static newImageButton(): ImageButtonBuilder {
