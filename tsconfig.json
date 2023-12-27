@@ -106,5 +106,5 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
-  "exclude": ["**/*.spec.ts", "vitest.config.ts"]
+  "exclude": ["**/*.spec.ts", "./tests", "vitest.config.ts"]
 }

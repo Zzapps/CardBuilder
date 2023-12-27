@@ -1,16 +1,35 @@
-import { ButtonWidget } from '../button';
+import { ButtonBuilder, ButtonWidget } from '../button';
 import {
   DecoratedTextWidget,
   DecoratedTextWidgetProps,
 } from './decorated-text.widget';
 
+type DecoratedTextBuilderProps = {
+  text: string;
+  topLabel?: string;
+  bottomLabel?: string;
+  buttonBuilder?: ButtonBuilder;
+  wrapText?: boolean;
+  startIcon?: {
+    iconUrl: string;
+  };
+};
+
 export class DecoratedTextBuilder {
-  private _props: DecoratedTextWidgetProps = {
+  private _props: DecoratedTextBuilderProps = {
     text: '',
   };
 
   public build(): DecoratedTextWidget {
-    return new DecoratedTextWidget(this._props);
+    const hasButton = !!this._props.buttonBuilder;
+
+    const props: DecoratedTextWidgetProps = {
+      ...this._props,
+      ...(hasButton && {
+        button: this._props.buttonBuilder!.build(),
+      }),
+    };
+    return new DecoratedTextWidget(props);
   }
 
   public setText(text: string): this {
@@ -32,8 +51,8 @@ export class DecoratedTextBuilder {
     return this;
   }
 
-  public setButton(button: ButtonWidget) {
-    this._props.button = button;
+  public setButton(button: ButtonBuilder) {
+    this._props.buttonBuilder = button;
     return this;
   }
 

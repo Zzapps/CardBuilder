@@ -1,8 +1,12 @@
 {
   "name": "cardbuilder",
-  "version": "0.0.10",
+  "version": "0.0.14",
   "description": "A helper library to create Google Workspace Add-on UIs",
-  "keywords": ["Google Workspace", "Zzapps", "Google Card UI"],
+  "keywords": [
+    "Google Workspace",
+    "Zzapps",
+    "Google Card UI"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/zzapps/cardbuilder"
@@ -11,7 +15,8 @@
   "scripts": {
     "test": "vitest",
     "coverage": "vitest run --coverage && npx istanbul-badges-readme",
-    "build": "tsc"
+    "build": "rm -rf ./dist && tsc",
+    "release": "npm run build && npm publish"
   },
   "author": "Niels Kersic <niels@zzapps.nl>",
   "license": "MIT",

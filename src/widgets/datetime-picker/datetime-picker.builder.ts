@@ -1,5 +1,5 @@
 import { Action } from '../../actions/action';
-import { CardBuilder } from '../../card.builder';
+import { CardService } from '../../card-service';
 import {
   DateTimePickerWidget,
   DateTimePickerWidgetProps,
@@ -17,7 +17,7 @@ export class DateTimePickerBuilder {
     return this;
   }
 
-  public setType(type: CardBuilder.DateTimePickerType): this {
+  public setType(type: CardService.DateTimePickerType): this {
     this._props.type = type;
     return this;
   }

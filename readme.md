@@ -44,6 +44,6 @@ const textParagraph = CardService.newTextParagraph('Hello world')
 const section = CardService.newCardSection().addWidget(selectionInput, textParagraph)
 
 // Create a card and add the section
-const card = CardService.newCardBuilder().addSection(section)
+const card = CardService.newCardBuilder().addSection(section).build();
 ```
 
