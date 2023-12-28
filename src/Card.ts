@@ -1,20 +1,24 @@
 import { CardSection } from './card-section/card-section';
 import { Footer } from './footer/footer';
+import { Header } from './header/header';
 
 export type CardProps = {
   sections: CardSection[];
+  header?: Header;
   fixedFooter?: Footer;
   name?: string;
 };
 
 export class Card {
   public readonly sections: CardSection[];
+  public readonly header?: Header;
   public readonly fixedFooter?: Footer;
   public readonly name?: string;
 
   public constructor(props: CardProps) {
     this.sections = props.sections;
     this.name = props.name;
+    this.header = props.header;
     this.fixedFooter = props.fixedFooter;
   }
 }

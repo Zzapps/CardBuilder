@@ -47,3 +47,16 @@ const section = CardService.newCardSection().addWidget(selectionInput, textParag
 const card = CardService.newCardBuilder().addSection(section).build();
 ```
 
+# Currently included components and widgets
+- Card
+- Section
+- Header
+- Footer
+- ImageButton
+- TextButton
+- ButtonList
+- DateTimePicker
+- SelectoinInput
+- DecoratedText
+- TextParagraph
+- Divider

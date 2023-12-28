@@ -12,6 +12,7 @@ import { DividerBuilder } from './widgets/divider/divider.builder';
 import { SelectionInputBuilder } from './widgets/selection-input/selection-input.builder';
 import { TextParagraphBuilder } from './widgets/text-paragraph/text-paragraph.builder';
 import { Color } from './shared/color';
+import { HeaderBuilder } from './header/header.builder';
 
 type CardServiceConfig = {
   primaryColor?: Color;
@@ -77,6 +78,10 @@ export class CardService {
 
   public static newOpenLink(): OpenLinkActionBuilder {
     return new OpenLinkActionBuilder();
+  }
+
+  public static newCardHeader(): HeaderBuilder {
+    return new HeaderBuilder();
   }
 
   public static newFixedFooter(): FooterBuilder {

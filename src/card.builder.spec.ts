@@ -12,6 +12,8 @@ import { TextButtonBuilder } from './widgets/button/text-button/text-button.buil
 import { DateTimePickerBuilder } from './widgets/datetime-picker/datetime-picker.builder';
 import { SelectionInputBuilder } from './widgets/selection-input/selection-input.builder';
 import { TextParagraphBuilder } from './widgets/text-paragraph/text-paragraph.builder';
+import { Footer } from './footer/footer';
+import { Header } from './header/header';
 
 describe('CardBuilder', () => {
   let sut: CardBuilder;
@@ -45,18 +47,33 @@ describe('CardBuilder', () => {
       });
     });
 
-    it.skip('should build the footer if it exists', () => {
-      // const button = CardBuilder.newTextButton();
-      // const footerBuilder = CardBuilder.newFixedFooter().setPrimaryButton(
-      //   button.build(),
-      // );
-      //
-      // vi.spyOn(footerBuilder, "build");
-      //
-      // sut.setFixedFooter(footerBuilder);
-      // sut.build();
-      //
-      // expect(footerBuilder.build).toHaveBeenCalled();
+    it('should build the footer if it exists', () => {
+      const button = CardService.newTextButton();
+      const footerBuilder =
+        CardService.newFixedFooter().setPrimaryButton(button);
+
+      vi.spyOn(footerBuilder, 'build');
+
+      sut.setFixedFooter(footerBuilder);
+      const output = sut.build();
+      const footer = footerBuilder.build();
+
+      expect(footerBuilder.build).toHaveBeenCalled();
+      expect(output.fixedFooter).toBeInstanceOf(Footer);
+      expect(output.fixedFooter).toEqual(footer);
+    });
+
+    it('should build the header if it exists', () => {
+      const headerBuilder = CardService.newCardHeader().setTitle('foo');
+      vi.spyOn(headerBuilder, 'build');
+
+      sut.setHeader(headerBuilder);
+      const output = sut.build();
+      const header = headerBuilder.build();
+
+      expect(headerBuilder.build).toHaveBeenCalled();
+      expect(output.header).toBeInstanceOf(Header);
+      expect(output.header).toEqual(header);
     });
   });
 
