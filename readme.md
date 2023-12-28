@@ -1,11 +1,15 @@
-# CardBuilder
-**A helper library to create Google Workspace Add-on UIs**
----
-*Note: this is not an official Google project*
+<p align="center">
+    <img src="/assets/cardbuilder-dark-text.svg?sanitize=true#gh-light-mode-only"/>
+    <img src="/assets/cardbuilder-light-text.svg?sanitize=true#gh-dark-mode-only"/>
+    <h1 align="center">A helper library to create Google Workspace Add-on UIs</h1>
+    <p align="center">A <a href="https://zzapps.nl" target="_blank">Zzapps</a> project.</p>
+    <p align="center">
+        <img src="https://img.shields.io/badge/coverage-82.28%25-green.svg?style=flat" />
+        <img src="https://img.shields.io/badge/dependencies-0-green.svg?style=flat" />
+        <img src="https://img.shields.io/badge/license-MIT-informational" />
+    </p>
+</p>
 
-| Statements                  | Branches                | Functions                 | Lines             |
-| --------------------------- | ----------------------- | ------------------------- | ----------------- |
-| ![Statements](https://img.shields.io/badge/statements-81.56%25-yellow.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-76.85%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-82.25%25-yellow.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-82.28%25-yellow.svg?style=flat) |
 
 # Introduction
 Google uses a [card-based UI](https://developers.google.com/apps-script/add-ons/concepts/card-interfaces) for Workspace Add-ons. These UIs can be created by a JSON object with elements that you want in your UI. A handy tool to try all the available elements can be found [here](https://addons.gsuite.google.com/uikit/builder).
