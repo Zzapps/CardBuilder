@@ -14,7 +14,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "vitest",
-    "coverage": "vitest run --coverage && npx istanbul-badges-readme",
+    "coverage": "vitest run --coverage && node scripts/generateCoverage",
     "build": "rm -rf ./dist && tsc",
     "release": "npm run build && npm publish"
   },
