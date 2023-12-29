@@ -1,6 +1,6 @@
 {
   "name": "cardbuilder",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "A helper library to create Google Workspace Add-on UIs",
   "keywords": [
     "Google Workspace",
