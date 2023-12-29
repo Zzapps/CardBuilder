@@ -1,5 +1,6 @@
 <p align="center">
     <img src="/assets/cardbuilder-dark-text.svg?sanitize=true#gh-light-mode-only"/>
+    <img src="/assets/cardbuilder-light-text.svg?sanitize=true#gh-dark-mode-only"/>
     <h1 align="center">A helper library for creating Google Workspace Add-on UIs</h1>
     <p align="center">A <a href="https://zzapps.nl" target="_blank">Zzapps</a> project.</p>
     <p align="center">
@@ -22,10 +23,12 @@ This project is still under development. Usage in production projects is therefo
 Here are the features we are working on:
 
 - [ ] Full CardBuilder
+- [x] Full Typescript type coverage
 - [ ] A helper for navigating through the card stack
 - [ ] More icons
 
-# Using the this package
+# Using this package
+Install the package with `npm install cardbuilder` and import it.
 Almost everything can be accessed from the `CardService` class. This class contains all the static methods to access the builders for card elements. The `CardService` namespace also contains all enums.
 
 An example:
