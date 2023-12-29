@@ -25,6 +25,7 @@
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vitest/coverage-istanbul": "^1.1.0",
+    "badge-maker": "^3.3.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "^43.0.0",
@@ -32,7 +33,7 @@
     "eslint-plugin-n": "^16.5.0",
     "eslint-plugin-prettier": "^5.1.1",
     "eslint-plugin-promise": "^6.1.1",
-    "istanbul-badges-readme": "^1.8.5",
+    "fs": "^0.0.1-security",
     "typescript": "^5.3.3",
     "vitest": "^1.1.0"
   }

@@ -1,10 +1,10 @@
 <p align="center">
     <img src="/assets/cardbuilder-dark-text.svg?sanitize=true#gh-light-mode-only"/>
     <img src="/assets/cardbuilder-light-text.svg?sanitize=true#gh-dark-mode-only"/>
-    <h1 align="center">A helper library to create Google Workspace Add-on UIs</h1>
+    <h1 align="center">A helper library for creating Google Workspace Add-on UIs</h1>
     <p align="center">A <a href="https://zzapps.nl" target="_blank">Zzapps</a> project.</p>
     <p align="center">
-        <img src="https://img.shields.io/badge/coverage-82.28%25-green.svg?style=flat" />
+        <img src="/assets/coverage-badge.svg?sanitize=true" />
         <img src="https://img.shields.io/badge/dependencies-0-green.svg?style=flat" />
         <img src="https://img.shields.io/badge/license-MIT-informational" />
     </p>
@@ -51,7 +51,7 @@ const section = CardService.newCardSection().addWidget(selectionInput, textParag
 const card = CardService.newCardBuilder().addSection(section).build();
 ```
 
-# Currently included components and widgets
+# Included components and widgets
 - Card
 - Section
 - Header
@@ -64,3 +64,5 @@ const card = CardService.newCardBuilder().addSection(section).build();
 - DecoratedText
 - TextParagraph
 - Divider
+
+More coming soon
