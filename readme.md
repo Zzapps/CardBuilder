@@ -12,7 +12,8 @@
 
 
 # Introduction
-Google uses a [card-based UI](https://developers.google.com/apps-script/add-ons/concepts/card-interfaces) for Workspace Add-ons. These UIs can be created by a JSON object with elements that you want in your UI. A handy tool to try all the available elements can be found [here](https://addons.gsuite.google.com/uikit/builder).
+Google Workspace Add-ons feature a [card-based user interface](https://developers.google.com/apps-script/add-ons/concepts/card-interfaces). To create these UIs, you define the desired elements within a JSON object. This JSON structure outlines the various components needed for the add-on's interface. A handy tool to try all the available elements can be found [here](https://addons.gsuite.google.com/uikit/builder).
+
 Setting up these JSON objects by hand quickly becomes cumbersome though. For this reason, Google has offered a CardService in Apps Script to create UIs using a [builder pattern](https://refactoring.guru/design-patterns/builder).
 
 However, if you're developing in plain Javascript or Typescript, you're out of luck. Until now. This package aims to provide full feature parity with the Apps Script builder, while adding some more useful features on top of it.
