@@ -1,6 +1,5 @@
 <p align="center">
     <img src="/assets/cardbuilder-dark-text.svg?sanitize=true#gh-light-mode-only"/>
-    <img src="/assets/cardbuilder-light-text.svg?sanitize=true#gh-dark-mode-only"/>
     <h1 align="center">A helper library for creating Google Workspace Add-on UIs</h1>
     <p align="center">A <a href="https://zzapps.nl" target="_blank">Zzapps</a> project.</p>
     <p align="center">
@@ -19,7 +18,7 @@ Setting up these JSON objects by hand quickly becomes cumbersome though. For thi
 However, if you're developing in plain Javascript or Typescript, you're out of luck. Until now. This package aims to provide full feature parity with the Apps Script builder, while adding some more useful features on top of it.
 
 # Roadmap
-This project is in its early stages. Usage in production projects is therefore not recommended.
+This project is still under development. Usage in production projects is therefore at your own discretion.
 Here are the features we are working on:
 
 - [ ] Full CardBuilder
@@ -61,7 +60,7 @@ const card = CardService.newCardBuilder().addSection(section).build();
 - TextButton
 - ButtonList
 - DateTimePicker
-- SelectoinInput
+- SelectionInput
 - DecoratedText
 - TextParagraph
 - Divider
